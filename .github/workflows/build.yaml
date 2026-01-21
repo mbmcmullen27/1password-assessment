@@ -22,10 +22,12 @@ jobs:
           mkdir $ARTIFACT_DIR
           mv package/electron-secure-defaults* $ARTIFACT_DIR
 
-      - run: echo ${{ steps.artifact.outputs.dir }}
+      - run: |
+          pwd
+          ls -lah
 
       - name: upload
         uses: actions/upload-artifact@v6
         with:
           name: ${{ steps.artifact.outputs.dir }}
-          path: ${{ steps.artifact.outpust.dir }}
+          path: ${{ steps.artifact.outpust.dir }}/
