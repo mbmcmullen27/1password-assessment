@@ -1,4 +1,4 @@
-name: Build
+name: Electronegativity
 on: workflow_dispatch
 
 jobs:
