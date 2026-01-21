@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v6
+
+      - name: check jq exists
+        run: jq --version
       
       - name: build
         run: |
@@ -20,6 +23,7 @@ jobs:
           ARTIFACT_DIR="release-candidate-$(jq -r '.version' package.json)"
           echo "dir=$ARTIFACT_DIR" >> "$GITHUB_OUTPUT"
           mkdir $ARTIFACT_DIR
+          ls -lah
           mv package/electron-secure-defaults* $ARTIFACT_DIR
 
       - name: upload
