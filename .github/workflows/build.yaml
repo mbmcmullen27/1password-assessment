@@ -22,6 +22,8 @@ jobs:
           mkdir $ARTIFACT_DIR
           mv package/electron-secure-defaults* $ARTIFACT_DIR
 
+      - run: echo ${{ steps.artifact.outputs.dir }}
+
       - name: upload
         uses: actions/upload-artifact@v6
         with:
