@@ -29,5 +29,5 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v6
         with:
-          name: ${{ steps.output.artifact.dir }}
-          path: ${{ steps.output.artifact.dir }}
+          name: ${{ steps.artifact.output.dir }}
+          path: ${{ steps.artifact.output.dir }}
