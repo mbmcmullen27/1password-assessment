@@ -1,0 +1,17 @@
+name: Build
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: build
+        run: |
+          yarn install
+          yarn build
+
+      - name: scan
+        run: yarn electronegativity
