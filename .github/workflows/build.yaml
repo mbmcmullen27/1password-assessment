@@ -1,4 +1,4 @@
-name: build
+name: Build
 on: workflow_dispatch
 
 jobs:
@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: ${{ steps.artifact.outputs.dir }}
-          path: ${{ steps.artifact.outputs.dir }}/
+          path: ${{ steps.artifact.outputs.dir }}
