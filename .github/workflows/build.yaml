@@ -1,0 +1,29 @@
+name: build
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+      
+      - name: build
+        run: |
+          yarn install
+          yarn build
+          yarn package
+
+      - name: prepare-release
+        id: artifact
+        run: |
+          ARTIFACT_DIR="release-candidate-$(jq -r '.version' package.json)"
+          echo "dir=$ARTIFACT_DIR" >> "$GITHUB_OUTPUT"
+          mkdir $ARTIFACT_DIR
+          mv package/electron-secure-defaults* $ARTIFACT_DIR
+
+      - name: upload
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ steps.output.artifact.dir }}
+          path: ${{ steps.output.artifact.dir }}
